@@ -3,21 +3,27 @@
 <head>
     <meta charset="UTF-8">
     <title>Login</title>
+    <script src="assets/js/config.js"></script>
+    <script src="assets/js/api-communication-abstractor.js"></script>
+    <script src="assets/js/login.js"></script>
 </head>
 <body>
-<div class="login-page">
-    <div class="form">
-        <form class="login-form">
-            <label>
-                <input type="text" placeholder="username"/>
-            </label>
-            <label>
-                <input type="password" placeholder="password"/>
-            </label>
-            <button>login</button>
-            <p class="message">Not registered? <a href="register.html">Create an account</a></p>
-        </form>
+    <div class="login-page">
+        <div class="form">
+            <form class="login-form">
+                <label>
+                    <input id="username" type="text" placeholder="username"/>
+                </label>
+                <label>
+                    <input id="password" type="password" placeholder="password"/>
+                </label>
+                <button id="submit">login</button>
+                <p class="message">Not registered? <a href="register.html">Create an account</a></p>
+            </form>
+        </div>
+        <div id="success" hidden>
+            <p class="success">Logged in!</p>
+        </div>
     </div>
-</div>
 </body>
 </html>
