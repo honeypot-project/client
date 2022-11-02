@@ -6,8 +6,7 @@ function fetchFromServer(path, httpVerb, requestBody) {
     return fetch(`${_config.getAPIUrl()}${path}`, options)
         .then((response) => {
             if (!response.ok) {
-                console.error("api scuffed");
-                throw response;
+                console.error(response);
             }
             return response.json();
         })

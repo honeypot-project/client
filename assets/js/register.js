@@ -20,6 +20,9 @@ function register(e) {
     }
 
     fetchFromServer("/register", "POST", data).then(response => {
-        console.log(response);
+        if (response.ok) {
+            document.querySelector("#success").removeAttribute("hidden");
+            setTimeout(function () {window.location.href="login.html"}, 3000);
+        }
     });
 }
