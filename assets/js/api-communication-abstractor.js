@@ -27,7 +27,7 @@ function constructOptions(httpVerb, requestBody) {
 }
 
 function checkResponse(response) {
-    if (response.status === 403 || response.error === "not logged in" || response.error === "please login again") {
+    if (response.status === 403 || response.status === 401 || response.error === "please login again") {
         window.location.href = "login.html";
     }
 }

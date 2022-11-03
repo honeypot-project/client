@@ -8,6 +8,7 @@ function init() {
         checkResponse(response);
         if (response.ok) {
             response.json().then(users => {
+                console.log(users);
                 for (let id in users) {
                     parseUser(id, users[id]);
                 }
@@ -32,10 +33,54 @@ function parseUser(id, user) {
     const generatedHtml = userHtml(id, user.username, solvedChallenges, user.disabled, user.admin);
 
     document.querySelector("#users").insertAdjacentHTML("beforeend", generatedHtml);
-    if (user.administrator) {
+    if (user.admin) {
         document.getElementById(id).querySelector(".make-admin").remove();
     }
-    makeButtonClickable();
+    if (user.disabled) {
+        document.getElementById(id).querySelector(".toggle-status").innerHTML = "Enable";
+    } else {
+        document.getElementById(id).querySelector(".toggle-status").innerHTML = "Disable";
+    }
+
+    makeToggleButtonsClickable();
+
+}
+
+// Yet to be implemented in API
+function giveAdmin(e) {
+    let userId = e.target.closest("li").id;
+    fetchFromServer(`/admin?user=${userId}`, "GET").then(response => {
+        checkResponse(response);
+        if (response.ok) {
+            document.getElementById(userId).querySelector(".make-admin").remove();
+        }
+    })
+}
+
+function toggleStatus(e) {
+    let userId = e.target.closest("li").id;
+    fetchFromServer(`/toggleUser?user=${userId}`, "GET").then(response => {
+        checkResponse(response);
+        if (response.ok) {
+            if (e.target.innerHTML === "Disable") {
+                e.target.innerHTML = "Enable";
+            } else {
+                e.target.innerHTML = "Disable";
+            }
+        }
+    });
+}
+
+function makeToggleButtonsClickable() {
+    let adminMaker = document.querySelectorAll(".make-admin");
+    adminMaker.forEach(button => {
+        button.addEventListener("click", giveAdmin);
+    });
+
+    let statusToggler = document.querySelectorAll(".toggle-status");
+    statusToggler.forEach(button => {
+        button.addEventListener("click", toggleStatus);
+    });
 }
 
 
