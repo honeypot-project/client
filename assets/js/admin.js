@@ -3,6 +3,44 @@
 document.addEventListener("DOMContentLoaded", init);
 
 function init() {
+    // Check which option is selected
+    // If "All" is selected, show all users
+    // If "Logged in" is selected, show only logged-in users
+    callCorrectFetch(document.querySelector("#type").value);
+    document.querySelector("#type").addEventListener("change", e => {
+        callCorrectFetch(e.target.value);
+    });
+}
+
+function callCorrectFetch(optionValue) {
+    console.log(optionValue)
+    if (optionValue === "all-users") {
+        fetchAllUsers();
+    } else if (optionValue === "online-users") {
+        fetchOnlineUsers();
+    }
+}
+
+
+
+function fetchOnlineUsers() {
+    document.querySelector("#users").innerHTML = "";
+    fetchFromServer("/online", "GET").then(response => {
+        checkResponse(response);
+        if (response.ok) {
+            response.json().then(users => {
+                console.log(users);
+                for (let id in users) {
+                    parseUser(id, users[id]);
+                }
+            });
+        }
+    });
+}
+
+
+function fetchAllUsers() {
+    document.querySelector("#users").innerHTML = "";
     fetchFromServer("/users", "GET").then(response => {
         // Response is object with key id and value challenge
         checkResponse(response);
