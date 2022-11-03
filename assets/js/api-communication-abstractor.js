@@ -8,7 +8,7 @@ function fetchFromServer(path, httpVerb, requestBody) {
             if (!response.ok) {
                 console.error(response);
             }
-            return response.json();
+            return response;
         })
         .then((responseToParse) => {
             return responseToParse;
@@ -27,7 +27,7 @@ function constructOptions(httpVerb, requestBody) {
 }
 
 function checkResponse(response) {
-    if (response.error === "not logged in" || response.error === "please login again") {
+    if (response.status === 403 || response.error === "not logged in" || response.error === "please login again") {
         window.location.href = "login.html";
     }
 }

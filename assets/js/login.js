@@ -3,7 +3,6 @@
 document.addEventListener("DOMContentLoaded", init);
 
 
-
 function init() {
     document.querySelector("#submit").addEventListener("click", login)
 }
@@ -22,7 +21,11 @@ function login(e) {
     fetchFromServer("/login", "POST", data).then(response => {
         if (response.ok) {
             document.querySelector("#success").removeAttribute("hidden");
-            setTimeout(function () {window.location.href="dashboard.html"}, 3000);
+            setTimeout(function () {
+                window.location.href = "dashboard.html"
+            }, 3000);
         }
+        console.log(response);
+
     });
 }

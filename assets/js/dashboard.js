@@ -8,14 +8,17 @@ function init() {
         // Response is object with key id and value challenge
         checkResponse(response);
         if (response.ok) {
-            for (let id in response) {
-                parseChallenge(id, response[id]);
-            }
+            response.json().then(challenges => {
+                for (let id in challenges) {
+                    parseChallenge(id, challenges[id]);
+                }
+            });
         }
     });
 }
 
 function parseChallenge(id, status) {
+    console.log(id, status);
     let challenge = document.getElementById(id);
     challenge.querySelector(".status").innerHTML = status;
     if (status === "solved") {

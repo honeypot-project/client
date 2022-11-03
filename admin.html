@@ -1,0 +1,30 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Admin page</title>
+    <script src="assets/js/api-communication-abstractor.js"></script>
+    <script src="assets/js/config.js"></script>
+    <script src="assets/js/admin.js"></script>
+</head>
+<body>
+<div class="admin-page">
+    <label for="type">Listing type:</label>
+    <select id="type">
+        <option value="all-users">All users</option>
+        <option value="online-users">Logged in users</option>
+    </select>
+
+    <ul id="users">
+        <li>
+            <p class="username"></p>
+            <p class="solved-challenges"></p>
+            <p class="status"></p>
+            <p class="admin"></p>
+            <button class="make-admin">Make admin</button>
+            <button class="toggle-status"></button>
+        </li>
+    </ul>
+</div>
+</body>
+</html>
