@@ -7,17 +7,20 @@ function init() {
     fetchFromServer("/user", "GET").then(response => {
         checkResponse(response);
         response.json().then(result => {
-            updateImage(result.img_id);
+            fillDetails(result);
         });
     })
 }
 
 
-function updateImage(img_id) {
-    fetchFromServer(`/uploads/imgs/${img_id}`, "GET").then(response => {
+function fillDetails(details) {
+    fetchFromServer(`/uploads/imgs/${details.img_id}`, "GET").then(response => {
         checkResponse(response);
         if (response.ok) {
             document.querySelector("#profile-img").src = response.url;
+            document.querySelector("#username").innerHTML = "Username: " + details.username;
+            document.querySelector("#disabled").innerHTML = "Disabled: " + details.disabled;
+            document.querySelector("#admin").innerHTML = "Admin: " + details.admin;
         }
     });
 }
