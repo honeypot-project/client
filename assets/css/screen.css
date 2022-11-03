@@ -1,0 +1,30 @@
+@font-face {
+    font-family: 'MrRobot';
+    font-style: normal;
+    font-weight: normal;
+    src: url("/assets/fonts/MR ROBOT.woff") format("woff");
+}
+
+body {
+    background-color: black;
+    font-family: 'MrRobot', serif;
+
+}
+
+div {
+    margin: 20rem auto;
+    text-align: center;
+    top: 50%;
+}
+
+li {
+    display: inline;
+    margin: 2rem;
+
+}
+
+a {
+    text-decoration: none;
+    font-size: 2rem;
+    color: red;
+}
