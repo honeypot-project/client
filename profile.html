@@ -10,6 +10,11 @@
 <body>
 <div class="profile">
     <img src="#" id="profile-img" alt="profile image">
+    <form enctype="multipart/form-data" method="post" name="img-upload" id="img-upload-form">
+        <label for="image-upload">Change profile picture:</label>
+        <input id="image-upload" type="file" alt="Upload image">
+        <button id="upload-image">Upload</button>
+    </form>
     <ul>
         <li><p id="username"></p></li>
         <li><p id="disabled"></p></li>
