@@ -2,11 +2,15 @@
 
 document.addEventListener("DOMContentLoaded", init);
 
+
 function init() {
     fetchFromServer("/challenges", "GET").then(response => {
         // Response is object with key id and value challenge
-        for (let id in response) {
-            parseChallenge(id, response[id]);
+        checkResponse(response);
+        if (response.ok) {
+            for (let id in response) {
+                parseChallenge(id, response[id]);
+            }
         }
     });
 }
@@ -38,13 +42,6 @@ function solveChallenge(e) {
     document.getElementById(challengeId).querySelector("#submit").addEventListener("click", submitFlag);
 }
 
-function submitFlagForm() {
-    return `<form>
-                <input id="flag" type="text" placeholder="Flag">
-                <input id="submit" value="Submit" type="submit">
-            </form>`;
-}
-
 function submitFlag(e) {
     e.preventDefault();
     let challengeId = e.target.closest("li").id;
@@ -52,9 +49,14 @@ function submitFlag(e) {
     let flag = document.getElementById(challengeId).querySelector("#flag").value;
 
     fetchFromServer("/challenges", "POST", {id: challengeId, flag: flag}).then(response => {
-        console.log(response);
+        checkResponse(response);
+
         if (response.error === "wrong flag") {
             document.getElementById(challengeId).querySelector(".status").innerHTML = "WRONG FLAG";
+        }
+
+        if (response.error === "user disabled") {
+            document.getElementById(challengeId).querySelector(".status").innerHTML = "USER DISABLED";
         }
 
         if (response.ok) {
@@ -63,4 +65,11 @@ function submitFlag(e) {
             document.getElementById(challengeId).querySelector("button").remove();
         }
     });
+}
+
+function submitFlagForm() {
+    return `<form>
+                <input id="flag" type="text" placeholder="Flag">
+                <input id="submit" value="Submit" type="submit">
+            </form>`;
 }

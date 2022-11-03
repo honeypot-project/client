@@ -26,3 +26,9 @@ function constructOptions(httpVerb, requestBody) {
     return options;
 }
 
+function checkResponse(response) {
+    if (response.error === "not logged in" || response.error === "please login again") {
+        window.location.href = "login.html";
+    }
+}
+
