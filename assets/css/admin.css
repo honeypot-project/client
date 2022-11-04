@@ -1,0 +1,12 @@
+@font-face {
+    font-family: 'MrRobot';
+    font-style: normal;
+    font-weight: normal;
+    src: url("/assets/fonts/MR ROBOT.woff") format("woff");
+}
+
+body {
+    background-color: black;
+    font-family: 'MrRobot', serif;
+    color: white;
+}
