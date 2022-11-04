@@ -23,7 +23,6 @@ function callCorrectFetch(optionValue) {
     }
 }
 
-
 function fetchOnlineUsers() {
     document.querySelector("#users").innerHTML = "";
     fetchFromServer("/online", "GET").then(response => {
@@ -37,7 +36,6 @@ function fetchOnlineUsers() {
         }
     });
 }
-
 
 function fetchAllUsers() {
     document.querySelector("#users").innerHTML = "";
@@ -53,7 +51,6 @@ function fetchAllUsers() {
         }
     });
 }
-
 
 function parseChallenges(solvedChallenges) {
     let challenges = "";
@@ -118,7 +115,6 @@ function makeToggleButtonsClickable() {
         button.addEventListener("click", toggleStatus);
     });
 }
-
 
 function userHtml(id, username, solvedChallenges, status, admin) {
     return `
