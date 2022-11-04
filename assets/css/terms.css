@@ -1,0 +1,28 @@
+@font-face {
+    font-family: 'MrRobot';
+    font-style: normal;
+    font-weight: normal;
+    src: url("/assets/fonts/MR ROBOT.woff") format("woff");
+}
+
+body {
+    background-color: black;
+    color: red;
+    font-size: 1.5em;
+    width: 100%;
+}
+
+p {
+    margin: 1rem auto 1rem 2rem;
+}
+
+input {
+    display: inline-block;
+    font-size: 1rem;
+    color: black;
+    letter-spacing: 0.1rem;
+    text-align: center;
+    box-sizing: content-box;
+    margin-left: 2rem;
+}
+
