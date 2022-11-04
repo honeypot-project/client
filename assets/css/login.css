@@ -9,11 +9,12 @@ body {
     background-color: black;
     font-family: 'MrRobot', serif;
     color: white;
+    font-size: 1.5rem;
 }
 
 form {
     margin: 10rem auto;
-    width: 25rem;
+    width: 35rem;
     display: flex;
     flex-direction: column;
 }
@@ -21,13 +22,12 @@ form {
 input {
     max-width: 100%;
     padding: 0.5rem;
-    margin: 0.5rem 0;
     border: none;
     border-bottom: 1px solid white;
     background-color: black;
     color: white;
     width: 99%;
-
+    margin: 0.5rem 0 1rem;
 }
 
 button {
