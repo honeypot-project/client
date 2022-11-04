@@ -10,22 +10,27 @@
     <link rel="stylesheet" href="assets/css/screen.css">
 </head>
 <body>
-    <div class="login-page">
-        <div class="form">
-            <form class="login-form">
-                <label>
-                    <input id="username" type="text" placeholder="username"/>
-                </label>
-                <label>
-                    <input id="password" type="password" placeholder="password"/>
-                </label>
-                <button id="submit">login</button>
-                <p class="message">Not registered? <a href="register.html">Create an account</a></p>
-            </form>
-        </div>
-        <div id="message">
-            <p class="message"></p>
-        </div>
+<div class="login-page">
+    <div class="form">
+        <form class="login-form">
+            <ul>
+                <li>
+                    <label for="username">Username:</label>
+                    <input id="username" type="text" placeholder="Enter Username" required class="hidden">
+                </li>
+                <li>
+                    <label for="password">Password:</label>
+                    <input id="password" type="password" placeholder="Enter Password" name="password" required
+                           class="hidden">
+                </li>
+            </ul>
+            <button id="submit">login</button>
+            <p class="message">Not registered? <a href="register.html">Create an account</a></p>
+        </form>
     </div>
+    <div id="message">
+        <p class="message"></p>
+    </div>
+</div>
 </body>
 </html>

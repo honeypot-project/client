@@ -4,20 +4,17 @@ document.addEventListener("DOMContentLoaded", init);
 
 
 function init() {
-    loadText();
+    loadTitle();
     document.querySelector("#submit").addEventListener("click", register)
 }
 
-function loadText() {
-    loadTitle();
-}
-
 function loadTitle() {
-    const h1 = document.querySelector("h1");
+    const h1 = document.querySelector("#title");
     const text = `Sign Up`;
 
     let i = 0;
 
+    // Add a delay per character
     const intervalId = setInterval(function () {
         h1.innerHTML += text[i];
         i++;
@@ -30,11 +27,12 @@ function loadTitle() {
 }
 
 function loadFirstParagraph() {
-    const p = document.querySelector("p");
+    const p = document.querySelector("#please-message");
     const text = `Please fill in this form to create an account. 👉👈`;
 
     let i = 0;
 
+    // Add a delay per character
     const intervalId = setInterval(function () {
         p.innerHTML += text[i];
         i++;
@@ -52,6 +50,7 @@ function loadUsernameField() {
 
     let i = 0;
 
+    // Add a delay per character
     const intervalId = setInterval(function () {
         label.innerHTML += text[i];
         i++;
@@ -70,6 +69,7 @@ function loadPasswordField() {
 
     let i = 0;
 
+    // Add a delay per character
     const intervalId = setInterval(function () {
         label.innerHTML += text[i];
         i++;
@@ -77,6 +77,7 @@ function loadPasswordField() {
         if (i === text.length) {
             clearInterval(intervalId);
             loadPasswordInput()
+            loadTermsAndConditions();
         }
     }, 50);
 }
@@ -91,7 +92,6 @@ function loadPasswordInput() {
     const input = document.querySelector("#password");
     input.classList.remove("hidden");
     input.focus();
-    loadTermsAndConditions();
 }
 
 function loadTermsAndConditions() {
@@ -124,11 +124,19 @@ function register(e) {
     }
 
     fetchFromServer("/register", "POST", data).then(response => {
+        let messageBox = document.querySelector("#message");
         if (response.ok) {
-            document.querySelector("#success").removeAttribute("hidden");
+            messageBox.classList.add("success");
+            messageBox.innerHTML = "Account created successfully!";
             setTimeout(function () {
                 window.location.href = "login.html"
             }, 3000);
+        } else {
+            messageBox.classList.add("error");
+            response.json().then(data => {
+                console.log(data);
+                messageBox.innerHTML = "Error: " + data.error + "!";
+            })
         }
     });
 }

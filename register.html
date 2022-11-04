@@ -7,36 +7,39 @@
     <script src="assets/js/api-communication-abstractor.js"></script>
     <script src="assets/js/config.js"></script>
     <link rel="stylesheet" href="assets/css/reset.css">
-    <link rel="stylesheet" href="assets/css/register.css">
+    <link rel="stylesheet" href="assets/css/screen.css">
 </head>
 <body>
-<form action="#">
+<form action="#" class="register">
     <div class="container">
-        <h1></h1>
-        <p></p>
+        <h1 id="title"></h1>
+        <p id="please-message"></p>
 
         <ul>
             <li>
                 <label for="username"></label>
-                <input id="username" placeholder="Enter Username" required class="hidden">
+                <input id="username" type="text" placeholder="Enter Username" required class="hidden">
             </li>
             <li>
                 <label for="password"></label>
-                <input id="password" type="password" placeholder="Enter Password" name="password" required class="hidden">
+                <input id="password" type="password" placeholder="Enter Password" name="password" required
+                       class="hidden">
             </li>
         </ul>
 
         <p class="info"></p>
 
-        <div class="clearfix">
-            <a href="index.html">
-                <button type="button" class="cancelbtn">Cancel</button>
-            </a>
-            <button type="submit" class="signupbtn" id="submit">Sign Up</button>
-        </div>
+        <ul class="nav-buttons">
+            <li><a href="index.html">
+                <button type="button" class="cancel-btn">Cancel</button>
+            </a></li>
+            <li>
+                <button type="submit" class="signup-btn" id="submit">Sign Up</button>
+            </li>
+        </ul>
     </div>
-    <div id="success" hidden>
-        <p class="success">Account created!</p>
+    <div id="message">
+        <p class=""></p>
     </div>
 </form>
 </body>
