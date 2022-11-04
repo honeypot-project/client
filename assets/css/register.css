@@ -75,3 +75,7 @@ li {
     color: white;
     border: 0.125rem solid green;
 }
+
+.hidden {
+    display: none;
+}
