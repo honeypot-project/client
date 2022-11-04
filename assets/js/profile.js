@@ -21,7 +21,7 @@ function uploadImage(e) {
 
     // Upload image to server with post request
     const request = new XMLHttpRequest();
-    request.open("POST", "http://localhost/api/upload", true);
+    request.open("POST", _config.getAPIUrl() + "/upload", true);
     let data = new FormData();
     data.append("image", document.querySelector("#image-upload").files[0]);
     console.log(data);
