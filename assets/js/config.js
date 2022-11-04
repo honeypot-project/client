@@ -1,3 +1,3 @@
 _config = {
-    getAPIUrl: function() { return `http://localhost:8080`;}
+    getAPIUrl: function() { return `http://localhost/api`;}
 }

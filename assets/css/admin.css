@@ -7,6 +7,46 @@
 
 body {
     background-color: black;
-    font-family: 'MrRobot', serif;
     color: white;
+}
+
+div:first-of-type {
+    background-color: darkred;
+    width: max-content;
+    padding: 2rem;
+    margin: 5rem auto;
+    border-radius: 1rem;
+}
+
+#user-container  {
+    background-color: dodgerblue;
+    width: max-content;
+    border-radius: 1rem;
+    padding: 1rem;
+}
+
+li {
+    list-style: none;
+    margin: 1rem;
+    padding: 1rem;
+    border-radius: 1rem;
+    display: grid;
+    grid-template-columns: repeat(5, 1fr);
+    background-color: navajowhite;
+    color: black;
+    font-size: 1.125rem;
+    border-top: 1px solid white;
+    border-right: 1px solid white;
+    font-weight: bold;
+    font-family: "JetBrains Mono", monospace;
+}
+
+button {
+    background-color: darkred;
+    color: white;
+    border: none;
+    border-radius: 1rem;
+    margin-top: 1rem;
+    margin-right: 1rem;
+    font-size: 1.125rem;
 }

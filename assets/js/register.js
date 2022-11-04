@@ -27,8 +27,6 @@ function loadTitle() {
             loadFirstParagraph();
         }
     }, 50);
-
-
 }
 
 function loadFirstParagraph() {

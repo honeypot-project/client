@@ -27,7 +27,6 @@ function constructOptions(httpVerb, requestBody) {
 }
 
 function checkResponse(response) {
-    console.log(response);
     if (response.status === 403 || response.status === 401 || response.error === "please login again") {
         window.location.href = "login.html";
 
