@@ -79,3 +79,7 @@ li {
 .hidden {
     display: none;
 }
+
+#success {
+    color: green;
+}
