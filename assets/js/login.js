@@ -19,8 +19,11 @@ function login(e) {
     }
 
     fetchFromServer("/login", "POST", data).then(response => {
+        if  (response.status === 400) {
+            document.querySelector("#message").innerHTML = "Wrong username or password";
+        }
         if (response.ok) {
-            document.querySelector("#success").removeAttribute("hidden");
+            document.querySelector("#message").innerHTML = "Login successful";
             setTimeout(function () {
                 window.location.href = "dashboard.html"
             }, 3000);
