@@ -98,7 +98,7 @@ function loadPasswordInput() {
 
 function loadTermsAndConditions() {
     const p = document.querySelector(".info");
-    const text = `By creating an account you agree to our Terms & Privacy.`;
+    const text = `By creating an account you agree to our `;
 
     let i = 0;
 
@@ -108,6 +108,7 @@ function loadTermsAndConditions() {
 
         if (i === text.length) {
             clearInterval(intervalId);
+            p.innerHTML += `<a href="terms.html">Terms & Privacy</a>`;
         }
     }, 10);
 }
