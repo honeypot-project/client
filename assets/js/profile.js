@@ -35,6 +35,10 @@ function fillDetails(details) {
             document.querySelector("#username").innerHTML = "Username: " + details.username;
             document.querySelector("#disabled").innerHTML = "Disabled: " + details.disabled;
             document.querySelector("#admin").innerHTML = "Admin: " + details.admin;
+        } else {
+            document.querySelector("#username").innerHTML = "Username: " + details.username;
+            document.querySelector("#disabled").innerHTML = "Disabled: " + details.disabled;
+            document.querySelector("#admin").innerHTML = "Admin: " + details.admin;
         }
     });
 }
