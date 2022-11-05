@@ -34,3 +34,9 @@ function checkResponse(response) {
     }
 }
 
+function clearColors(tag) {
+    tag.classList.remove("success");
+    tag.classList.remove("warning");
+    tag.classList.remove("error");
+}
+

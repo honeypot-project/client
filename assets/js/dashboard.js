@@ -89,12 +89,6 @@ function submitFlag(e) {
     });
 }
 
-function clearColors(tag) {
-    tag.classList.remove("success");
-    tag.classList.remove("warning");
-    tag.classList.remove("error");
-}
-
 function submitFlagForm() {
     return `<form action="#">
                 <input id="flag" type="text" placeholder="Flag">
