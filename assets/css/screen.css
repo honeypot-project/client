@@ -11,6 +11,7 @@ body {
     color: white;
     font-size: 1.5rem;
     text-align: center;
+    overflow: hidden;
 }
 
 
@@ -220,4 +221,51 @@ UTILITY CLASSES
     color: white;
     margin: 0.5rem;
     background-color: darkgray;
+}
+
+.profile {
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
+    align-items: center;
+    margin: 1rem;
+}
+
+.profile img {
+    height: 10%;
+    border-radius: 50%;
+    margin: 2rem;
+    max-width: 25%;
+    max-height: 100%;
+}
+
+.profile #img-upload-form {
+    /* Used to position the input */
+    position: relative;
+
+    /* Center the content */
+    align-items: center;
+    display: flex;
+
+    /* Border */
+    border: 1px solid #d1d5db;
+    border-radius: 0.25rem;
+    padding: 0.25rem 0.5rem;
+}
+
+.profile #img-upload-form label {
+    cursor: pointer;
+    padding: 1rem;
+}
+
+.profile #img-upload-form button {
+    width: 50%;
+
+}
+
+.profile #img-upload-form input {
+    /* Hide the input */
+    opacity: 0;
+    position: absolute;
+    z-index: -1;
 }

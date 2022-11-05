@@ -6,13 +6,18 @@
     <script src="assets/js/profile.js"></script>
     <script src="assets/js/api-communication-abstractor.js"></script>
     <script src="assets/js/config.js"></script>
+    <link rel="stylesheet" href="assets/css/screen.css">
 </head>
 <body>
+<header>
+    <a href="dashboard.html">Go to dasboard</a>
+    <a href="#">Logout</a>
+</header>
 <div class="profile">
     <img src="#" id="profile-img" alt="profile image">
     <form enctype="multipart/form-data" method="post" name="img-upload" id="img-upload-form">
-        <label for="image-upload">Change profile picture:</label>
-        <input id="image-upload" type="file" alt="Upload image">
+        <label for="image-upload">Click to select a photo to upload</label>
+        <input id="image-upload" type="file" alt="Upload image" name="here">
         <button id="upload-image">Upload</button>
     </form>
     <ul>
