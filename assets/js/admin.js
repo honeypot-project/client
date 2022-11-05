@@ -68,6 +68,7 @@ function parseUser(id, user) {
     document.querySelector("#users").insertAdjacentHTML("beforeend", generatedHtml);
     if (user.admin) {
         document.getElementById(id).querySelector(".make-admin").remove();
+        document.getElementById(id).querySelector(".toggle-status").remove();
     }
     if (user.disabled) {
         document.getElementById(id).querySelector(".toggle-status").innerHTML = "Enable";
