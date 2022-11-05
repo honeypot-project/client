@@ -129,6 +129,7 @@ UTILITY CLASSES
 
 .register li {
     display: block;
+    text-align: left;
 }
 
 .register input {
