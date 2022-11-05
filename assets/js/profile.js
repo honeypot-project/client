@@ -16,6 +16,9 @@ function init() {
 
     // Add event listener to upload button
     document.querySelector("#upload-image").addEventListener("click", uploadImage);
+
+    // Remove session when logging out
+    document.querySelector("#logout-button").addEventListener("click", removeSession);
 }
 
 
@@ -54,4 +57,9 @@ function fillDetails(details) {
         document.querySelector("#disabled").innerHTML = "Disabled: " + details.disabled;
         document.querySelector("#admin").innerHTML = "Admin: " + details.admin;
     });
+}
+
+function removeSession(e) {
+    const cookie = document.cookie;
+    document.cookie=cookie+";max-age=0";
 }
