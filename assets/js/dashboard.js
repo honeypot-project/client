@@ -23,12 +23,15 @@ function parseChallenge(id, status) {
     challenge.querySelector(".status").innerHTML = status;
     if (status === "solved") {
         challenge.querySelector("button").remove();
+        challenge.querySelector(".status").classList.add("success");
+    } else {
+        challenge.querySelector(".status").classList.add("warning");
     }
     makeButtonClickable();
 }
 
 function makeButtonClickable() {
-    let buttons = document.querySelectorAll(".challenges button");
+    let buttons = document.querySelectorAll(".challenges .submit-challenge");
     buttons.forEach(button => {
         button.addEventListener("click", solveChallenge);
     });
@@ -39,40 +42,62 @@ function solveChallenge(e) {
     if (document.querySelector("form") !== null) {
         document.querySelector("form").remove();
     }
-    let challengeId = e.target.closest("li").id;
+    let challenge = e.target.closest("li");
 
-    document.getElementById(challengeId).insertAdjacentHTML("beforeend", submitFlagForm());
-    document.getElementById(challengeId).querySelector("#submit").addEventListener("click", submitFlag);
+    challenge.insertAdjacentHTML("beforeend", submitFlagForm());
+    challenge.querySelector("form button").addEventListener("click", submitFlag);
 }
 
 function submitFlag(e) {
     e.preventDefault();
-    let challengeId = e.target.closest("li").id;
+    let challengeBeingSubmitted = e.target.closest("li");
 
-    let flag = document.getElementById(challengeId).querySelector("#flag").value;
+    // Clear colors and show "submitting" message
+    const status = challengeBeingSubmitted.querySelector(".status");
+    clearColors(status);
+    status.classList.add("warning");
+    status.innerHTML = "Submitting...";
 
-    fetchFromServer("/challenges", "POST", {id: challengeId, flag: flag}).then(response => {
+    let flag = challengeBeingSubmitted.querySelector("#flag").value;
+
+    fetchFromServer("/challenges", "POST", {id: challengeBeingSubmitted.id, flag: flag}).then(response => {
         checkResponse(response);
-
-        if (response.error === "wrong flag") {
-            document.getElementById(challengeId).querySelector(".status").innerHTML = "WRONG FLAG";
-        }
-
-        if (response.error === "user disabled") {
-            document.getElementById(challengeId).querySelector(".status").innerHTML = "USER DISABLED";
-        }
-
         if (response.ok) {
-            document.getElementById(challengeId).querySelector(".status").innerHTML = "solved";
+            const status = challengeBeingSubmitted.querySelector(".status");
+            status.innerHTML = "Solved";
+            clearColors(status);
+            status.classList.add("success");
             document.querySelector("form").remove();
-            document.getElementById(challengeId).querySelector("button").remove();
+            challengeBeingSubmitted.querySelector("button").remove();
+        } else {
+            response.json().then(error => {
+                if (error.error === "wrong flag") {
+                    const status = challengeBeingSubmitted.querySelector(".status");
+                    clearColors(status);
+                    status.classList.add("error");
+                    status.innerHTML = "WRONG FLAG";
+                }
+
+                if (error.error === "user disabled") {
+                    const status = challengeBeingSubmitted.querySelector(".status");
+                    clearColors(status);
+                    status.classList.add("error");
+                    status.innerHTML = "USER DISABLED";
+                }
+            });
         }
     });
 }
 
+function clearColors(tag) {
+    tag.classList.remove("success");
+    tag.classList.remove("warning");
+    tag.classList.remove("error");
+}
+
 function submitFlagForm() {
-    return `<form>
+    return `<form action="#">
                 <input id="flag" type="text" placeholder="Flag">
-                <input id="submit" value="Submit" type="submit">
+                <button type="submit">Submit</button>
             </form>`;
 }
