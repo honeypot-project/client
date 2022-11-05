@@ -71,14 +71,14 @@ function submitFlag(e) {
             challengeBeingSubmitted.querySelector("button").remove();
         } else {
             response.json().then(error => {
-                if (error.error === "wrong flag") {
+                if (error.cause === "wrong flag") {
                     const status = challengeBeingSubmitted.querySelector(".status");
                     clearColors(status);
                     status.classList.add("error");
                     status.innerHTML = "WRONG FLAG";
                 }
 
-                if (error.error === "user disabled") {
+                if (error.cause === "user disabled") {
                     const status = challengeBeingSubmitted.querySelector(".status");
                     clearColors(status);
                     status.classList.add("error");

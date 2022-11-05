@@ -24,8 +24,8 @@ function callCorrectFetch(optionValue) {
 }
 
 function fetchOnlineUsers() {
-    document.querySelector("#users").innerHTML = "";
     fetchFromServer("/online", "GET").then(response => {
+        document.querySelector("#users").innerHTML = "";
         checkResponse(response);
         if (response.ok) {
             response.json().then(users => {
@@ -38,8 +38,8 @@ function fetchOnlineUsers() {
 }
 
 function fetchAllUsers() {
-    document.querySelector("#users").innerHTML = "";
     fetchFromServer("/users", "GET").then(response => {
+        document.querySelector("#users").innerHTML = "";
         // Response is object with key id and value challenge
         checkResponse(response);
         if (response.ok) {

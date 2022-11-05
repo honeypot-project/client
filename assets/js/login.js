@@ -28,7 +28,5 @@ function login(e) {
                 window.location.href = "dashboard.html"
             }, 3000);
         }
-        console.log(response);
-
     });
 }

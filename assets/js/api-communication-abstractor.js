@@ -7,6 +7,7 @@ function fetchFromServer(path, httpVerb, requestBody) {
         .then((response) => {
             if (!response.ok) {
                 console.error(response);
+                return response;
             }
             return response;
         })
@@ -27,7 +28,7 @@ function constructOptions(httpVerb, requestBody) {
 }
 
 function checkResponse(response) {
-    if (response.status === 403 || response.status === 401 || response.error === "please login again") {
+    if (response.status === 403 || response.status === 401 || response.status === 400) {
         window.location.href = "login.html";
 
     }

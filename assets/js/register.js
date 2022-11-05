@@ -126,6 +126,7 @@ function register(e) {
     fetchFromServer("/register", "POST", data).then(response => {
         let messageBox = document.querySelector("#message");
         if (response.ok) {
+            messageBox.classList.remove("error");
             messageBox.classList.add("success");
             messageBox.innerHTML = "Account created successfully!";
             setTimeout(function () {
@@ -134,8 +135,7 @@ function register(e) {
         } else {
             messageBox.classList.add("error");
             response.json().then(data => {
-                console.log(data);
-                messageBox.innerHTML = "Error: " + data.error + "!";
+                messageBox.innerHTML = "Error: " + data.cause + "!";
             })
         }
     });

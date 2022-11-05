@@ -24,12 +24,7 @@ function uploadImage(e) {
     request.open("POST", _config.getAPIUrl() + "/upload", true);
     let data = new FormData();
     data.append("image", document.querySelector("#image-upload").files[0]);
-    console.log(data);
     request.send(data);
-
-    request.onload = function() {
-        console.log(request.response);
-    }
 }
 
 function fillDetails(details) {
