@@ -14,17 +14,20 @@
     <a href="#">Logout</a>
 </header>
 <div class="profile">
-    <img src="#" id="profile-img" alt="profile image">
+    <img src="#" id="profile-img" alt="profile image placeholder">
     <form enctype="multipart/form-data" method="post" name="img-upload" id="img-upload-form">
         <label for="image-upload">Click to select a photo to upload</label>
-        <input id="image-upload" type="file" alt="Upload image" name="here">
-        <button id="upload-image">Upload</button>
+        <input id="image-upload" type="file" alt="Upload image upload" name="here">
+        <button id="upload-image" class="hidden">Upload</button>
     </form>
     <ul>
         <li><p id="username"></p></li>
         <li><p id="disabled"></p></li>
         <li><p id="admin"></p></li>
     </ul>
+</div>
+<div id="message">
+    <p class="message"></p>
 </div>
 </body>
 </html>

@@ -10,6 +10,9 @@ function init() {
             fillDetails(result);
         });
     })
+    document.querySelector("#image-upload").addEventListener("change", function () {
+        document.querySelector("#upload-image").classList.remove("hidden");
+    });
 
     // Add event listener to upload button
     document.querySelector("#upload-image").addEventListener("click", uploadImage);
@@ -25,6 +28,17 @@ function uploadImage(e) {
     let data = new FormData();
     data.append("image", document.querySelector("#image-upload").files[0]);
     request.send(data);
+
+    request.onloadend = function () {
+        if (request.status === 200) {
+            // Reload page to show new image
+            window.location.reload();
+        } else {
+
+            const messageBox = document.querySelector("#message");
+            messageBox.querySelector("p").innerHTML = JSON.parse(request.response).cause;
+        }
+    }
 }
 
 function fillDetails(details) {
@@ -32,13 +46,12 @@ function fillDetails(details) {
         checkResponse(response);
         if (response.ok) {
             document.querySelector("#profile-img").src = response.url;
-            document.querySelector("#username").innerHTML = "Username: " + details.username;
-            document.querySelector("#disabled").innerHTML = "Disabled: " + details.disabled;
-            document.querySelector("#admin").innerHTML = "Admin: " + details.admin;
         } else {
-            document.querySelector("#username").innerHTML = "Username: " + details.username;
-            document.querySelector("#disabled").innerHTML = "Disabled: " + details.disabled;
-            document.querySelector("#admin").innerHTML = "Admin: " + details.admin;
+            document.querySelector("#profile-img").src = _config.defaultProfileImage();
         }
+
+        document.querySelector("#username").innerHTML = "Username: " + details.username;
+        document.querySelector("#disabled").innerHTML = "Disabled: " + details.disabled;
+        document.querySelector("#admin").innerHTML = "Admin: " + details.admin;
     });
 }
