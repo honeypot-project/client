@@ -89,6 +89,10 @@ UTILITY CLASSES
     display: none;
 }
 
+.challenges .challenge:first-of-type {
+    display: none;
+}
+
 .not-signed-in {
     margin: 20rem auto;
     top: 50%;

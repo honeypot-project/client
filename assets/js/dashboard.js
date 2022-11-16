@@ -27,6 +27,10 @@ function parseChallenge(id, status) {
     } else {
         challenge.querySelector(".status").classList.add("warning");
     }
+
+    if (document.getElementById("0").querySelector(".success")) {
+        showHiddenChallengeWhenSolved();
+    }
     makeButtonClickable();
 }
 
@@ -94,4 +98,8 @@ function submitFlagForm() {
                 <input id="flag" type="text" placeholder="Flag">
                 <button type="submit">Submit</button>
             </form>`;
+}
+
+function showHiddenChallengeWhenSolved() {
+    document.querySelector(".challenges .challenge:first-of-type").setAttribute("style", "display: block;");
 }
