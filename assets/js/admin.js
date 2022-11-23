@@ -4,9 +4,6 @@ document.addEventListener("DOMContentLoaded", init);
 
 function init() {
     callCorrectFetch(document.querySelector("#type").value)
-    setInterval(() => {
-        callCorrectFetch(document.querySelector("#type").value)
-    }, 5000);
     // Check which option is selected
     // If "All" is selected, show all users
     // If "Logged in" is selected, show only logged-in users
@@ -63,7 +60,7 @@ function parseChallenges(solvedChallenges) {
 
 function parseUser(id, user) {
     const solvedChallenges = parseChallenges(user.solvedChallenges);
-    const generatedHtml = userHtml(id, user.username, solvedChallenges, user.disabled, user.admin);
+    const generatedHtml = userHtml(id, user.username, solvedChallenges, user.disabled, user.admin, user.challenges);
 
     document.querySelector("#users").insertAdjacentHTML("beforeend", generatedHtml);
     if (user.admin) {
@@ -116,7 +113,7 @@ function makeToggleButtonsClickable() {
     });
 }
 
-function userHtml(id, username, solvedChallenges, status, admin) {
+function userHtml(id, username, solvedChallenges, status, admin, challenges) {
     return `
             <li id="${id}">
                 <p class="id">user id: ${id}</p>
@@ -124,6 +121,7 @@ function userHtml(id, username, solvedChallenges, status, admin) {
                 <p class="solved-challenges">${solvedChallenges}</p>
                 <p class="status">disabled: ${status}</p>
                 <p class="admin">admin: ${admin}</p>
+                <p class="solved-challenges">${challenges}</p>
                 <button class="make-admin">Make admin</button>
                 <button class="toggle-status"></button>
             </li>`;
